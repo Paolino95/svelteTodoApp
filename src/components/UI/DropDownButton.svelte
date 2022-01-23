@@ -57,11 +57,13 @@
 
     .dropdown-menu {
         background: rgb(68, 68, 68);
+        padding: 0 !important;
     }
 
     .dropdown-item {
         color: white;
-        border-bottom: solid 0.5px rgba(255, 153, 0, 0.863);
+        border: none !important;
+        border-bottom: solid 0.5px rgba(255, 153, 0, 0.863) !important;
         border-radius: 2px;
     }
 

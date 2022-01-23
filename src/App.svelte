@@ -18,6 +18,11 @@
     let searchFilter = '';
     let category = 'Nessuna';
     let showModal = false;
+    let ordering = [
+        { id: 0, label: 'data crescente' },
+        { id: 1, label: 'data decrescente' },
+    ];
+    let order = 'Nessuna';
 
     onMount(() => todos.setTodos());
 
@@ -61,14 +66,17 @@
                 placeholder="Ricerca qui..."
             />
         </div>
-        <div slot="slot2" class="dropdown">
+        <IconButton slot="slot2" icon="fa-plus-circle" on:click={openModal} />
+        <div slot="slot3" class="dropdown">
             <DropDownButton
                 title="Filtra per categoria"
                 selections={$categories}
                 bind:value={category}
             />
         </div>
-        <IconButton icon="fa-plus-circle" on:click={openModal} />
+        <div slot="slot4" class="dropdown">
+            <DropDownButton title="Ordina Per" selections={ordering} bind:value={order} />
+        </div>
     </Header>
 
     {#if $todos.length > 0}
@@ -121,11 +129,8 @@
     .row {
         margin: 0 !important;
     }
-    .dropdown {
-        width: 40%;
-    }
     .input {
-        width: 55%;
+        width: 90%;
     }
     .todo {
         width: 285px !important;

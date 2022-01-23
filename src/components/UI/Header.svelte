@@ -15,7 +15,10 @@
     <div class="d-inline-flex w-100 align-items-center">
         <slot name="slot1" />
         <slot name="slot2" />
-        <slot />
+    </div>
+    <div class="d-inline-flex w-100  m-2 align-items-center">
+        <slot class="w-50" name="slot3" />
+        <slot class="w-50" name="slot4" />
     </div>
 </header>
 
