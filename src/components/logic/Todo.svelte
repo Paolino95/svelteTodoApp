@@ -59,7 +59,6 @@
         position: absolute;
         bottom: 15px;
         left: 5px;
-        color: $lightDecorations;
     }
     .fa-check {
         color: rgb(38, 224, 94);
@@ -67,10 +66,12 @@
     .fa-exclamation-circle {
         color: $lightDecorations;
     }
-    .fa-trash-alt {
+    .fa-trash-alt,
+    .fa-edit {
         color: rgba(5, 32, 66, 0.425);
     }
-    .fa-trash-alt:hover {
+    .fa-trash-alt:hover,
+    .fa-edit:hover {
         color: $lightDecorations;
     }
     .category {
@@ -89,8 +90,9 @@
         li {
             background-color: $darkContent;
         }
+        .fa-trash-alt,
         .fa-edit {
-            color: $darkDecorations;
+            color: rgba(5, 32, 66, 0.425);
         }
         .fa-exclamation-circle {
             color: $darkDecorations;
@@ -102,7 +104,8 @@
             color: $darkTextColor !important;
             border: solid 1.5px $darkDecorations;
         }
-        .fa-trash-alt:hover {
+        .fa-trash-alt:hover,
+        .fa-edit:hover {
             color: $darkDecorations;
         }
     }

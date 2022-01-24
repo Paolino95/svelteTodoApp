@@ -15,10 +15,11 @@
     import { flip } from 'svelte/animate';
     import { onMount } from 'svelte';
 
+    export let colorTheme = 'light';
     let searchFilter = '';
     let category = 'Nessuna';
     let showModal = false;
-    let colorMode = 'dark';
+
     let ordering = [
         { id: 0, label: 'data crescente' },
         { id: 1, label: 'data decrescente' },
@@ -66,18 +67,18 @@
     };
 
     function toggleColorMode() {
-        if (colorMode === 'dark') {
-            colorMode = 'light';
+        if (colorTheme === 'dark') {
+            colorTheme = 'light';
             document.body.classList.add('light');
             document.body.classList.remove('dark');
-        } else if (colorMode === 'light') {
-            colorMode = 'dark';
+        } else if (colorTheme === 'light') {
+            colorTheme = 'dark';
             document.body.classList.add('dark');
             document.body.classList.remove('light');
         }
     }
 
-    $: colorModeIcon = colorMode === 'dark' ? 'fa-moon' : 'fa-sun';
+    $: colorThemeIcon = colorTheme === 'dark' ? 'fa-moon' : 'fa-sun';
 
     function getTodo(id) {
         return $todos.find(todo => todo.id === id);
@@ -106,7 +107,7 @@
             <IconButton icon="fa-plus-circle" on:click={openModal} />
         </div>
         <div transition:fade slot="slot3">
-            <IconButton icon={colorModeIcon} on:click={toggleColorMode} />
+            <IconButton icon={colorThemeIcon} on:click={toggleColorMode} />
         </div>
         <DropDownButton
             slot="slot4"
