@@ -35,7 +35,7 @@
                 done: false,
                 description: todoDescription,
                 category,
-                date: new Date().toString(),
+                date: new Date(),
             });
 
             todoDescription = '';

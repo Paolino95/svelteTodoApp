@@ -27,13 +27,16 @@
     onMount(() => todos.setTodos());
 
     $: editableTodo = {};
-    $: filterTodos = $todos
-        .filter(todo => todo.description.toLowerCase().includes(searchFilter))
-        .filter(todo => {
-            if (category !== 'Nessuna') {
-                return todo.category === category;
-            } else return todo;
-        });
+    $: filterTodos = sortTodos(
+        $todos
+            .filter(todo => todo.description.toLowerCase().includes(searchFilter))
+            .filter(todo => {
+                if (category !== 'Nessuna') {
+                    return todo.category === category;
+                } else return todo;
+            })
+    );
+
     $: editTodoTitle = Object.keys(editableTodo).length > 0 ? 'Edit' : 'Add';
 
     function editTodo(event) {
@@ -42,6 +45,24 @@
 
         openModal();
     }
+
+    $: sortTodos = array => {
+        if (order === 'Nessuna') {
+            return array;
+        } else if (order === 'data crescente') {
+            return array.sort((a, b) => {
+                if (a.date > b.date) {
+                    return 1;
+                } else return -1;
+            });
+        } else {
+            return array.sort((a, b) => {
+                if (a.date < b.date) {
+                    return 1;
+                } else return -1;
+            });
+        }
+    };
 
     function getTodo(id) {
         return $todos.find(todo => todo.id === id);
