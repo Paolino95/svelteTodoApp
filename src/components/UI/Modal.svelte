@@ -30,7 +30,8 @@
 </div>
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     .modal-backdrop {
         position: fixed;
@@ -38,7 +39,7 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background: $shadows;
+        background: $lightShadows;
         z-index: 10;
     }
 
@@ -50,17 +51,17 @@
         max-height: 80vh;
         border-radius: 5px;
         z-index: 100;
-        box-shadow: 0 2px 8px $shadows;
+        box-shadow: 0 2px 8px $lightShadows;
         height: 400px;
         overflow: hidden !important;
-        background-color: $primaryTheme;
-        border: solid 1.5px $myYellow;
+        background-color: $lightPrimary;
+        border: solid 1.5px $lightDecorations;
     }
 
     h1 {
         padding: 1rem;
         margin-left: 5px;
-        color: $textColor;
+        color: $lightTextColor;
         font-family: serif;
         font-style: italic;
     }
@@ -79,6 +80,22 @@
         .mymodal {
             width: 35rem;
             left: calc(50% - 20rem);
+        }
+    }
+
+    :global(body.dark) {
+        .modal-backdrop {
+            background: $darkShadows;
+        }
+
+        .mymodal {
+            box-shadow: 0 2px 8px $darkShadows;
+            background-color: $darkPrimary;
+            border: solid 1.5px $darkDecorations;
+        }
+
+        h1 {
+            color: $darkTextColor;
         }
     }
 </style>

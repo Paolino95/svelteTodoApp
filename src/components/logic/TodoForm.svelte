@@ -14,9 +14,14 @@
 <Select bind:value={category} title="Categories" selections={$categories} />
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     span {
-        color: $textColor;
+        color: $lightTextColor;
+    }
+
+    :global(body.dark) span {
+        color: $darkTextColor;
     }
 </style>

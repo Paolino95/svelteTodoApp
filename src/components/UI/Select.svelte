@@ -22,24 +22,43 @@
 </div>
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     span {
-        color: $textColor;
+        color: $lightTextColor;
     }
     select {
-        background-color: $primaryTheme;
-        color: $textColor;
-        border: solid 1.5px $myYellow;
+        background-color: $lightPrimary;
+        color: $lightTextColor;
+        border: solid 1.5px $lightDecorations;
         border-radius: 5px;
         cursor: pointer;
     }
     select > option {
         border-radius: 5px;
-        border-bottom: solid 1.5px $myYellow;
+        border-bottom: solid 1.5px $lightDecorations;
     }
 
     .form-select:focus {
-        box-shadow: 0 0 0 0.2rem $myYellow !important;
+        box-shadow: 0 0 0 0.2rem $lightDecorations !important;
+    }
+
+    :global(body.dark) {
+        span {
+            color: $darkTextColor;
+        }
+        select {
+            background-color: $darkPrimary;
+            color: $darkTextColor;
+            border: solid 1.5px $darkDecorations;
+        }
+        select > option {
+            border-bottom: solid 1.5px $darkDecorations;
+        }
+
+        .form-select:focus {
+            box-shadow: 0 0 0 0.2rem $darkDecorations !important;
+        }
     }
 </style>

@@ -3,7 +3,7 @@
     export let title = '';
 </script>
 
-<header class="text-light my-4">
+<header class="my-4">
     {#if image}
         <div class="d-flex p-1 w-100 justify-content-between align-items-center">
             <h1 class="p-1">{title}</h1>
@@ -16,14 +16,28 @@
         <slot name="slot1" />
         <slot name="slot2" />
     </div>
-    <div class="d-inline-flex w-100  m-2 align-items-center">
-        <slot class="w-50" name="slot3" />
-        <slot class="w-50" name="slot4" />
+    <div class="d-inline-flex w-100 m-2 align-items-center">
+        <slot name="slot3" />
+        <slot name="slot4" />
+        <slot name="slot5" />
     </div>
 </header>
 
-<style>
+<style lang="scss">
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
+
     img {
         width: 20%;
+    }
+
+    h1 {
+        color: $lightDecorations;
+    }
+
+    :global(body.dark) {
+        h1 {
+            color: $darkTextColor;
+        }
     }
 </style>

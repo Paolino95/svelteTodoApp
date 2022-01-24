@@ -5,15 +5,25 @@
 <i class="fa fas far {icon} icon iconbutton" on:click />
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     .iconbutton {
         width: 10%;
         cursor: pointer;
-        color: $iconButtonsColor;
+        color: $lightIconButtons;
         font-size: 40px;
     }
     .iconbutton:hover {
-        color: $myYellow;
+        color: $lightDecorations;
+    }
+
+    :global(body.dark) {
+        .iconbutton {
+            color: $darkIconButtons;
+        }
+        .iconbutton:hover {
+            color: $darkDecorations;
+        }
     }
 </style>

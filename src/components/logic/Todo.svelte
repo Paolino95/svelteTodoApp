@@ -41,10 +41,11 @@
 </li>
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     li {
-        background-color: $softGrey;
+        background-color: $lightContent;
     }
     .icon {
         cursor: pointer;
@@ -58,26 +59,45 @@
         position: absolute;
         bottom: 15px;
         left: 5px;
-        color: $myYellow;
+        color: $lightDecorations;
     }
     .fa-check {
         color: rgb(38, 224, 94);
     }
     .fa-exclamation-circle {
-        color: $myYellow;
+        color: $lightDecorations;
     }
     .fa-trash-alt {
         color: rgba(5, 32, 66, 0.425);
     }
     .category {
-        color: $textColor !important;
+        color: $lightTextColor !important;
     }
     .list-group-item {
-        color: $textColor !important;
+        color: $lightTextColor !important;
         border-radius: 3px !important;
-        border: solid 1.5px $myYellow;
+        border: solid 1.5px $lightDecorations;
         padding: 15px;
         margin: 10px;
         height: 200px;
+    }
+
+    :global(body.dark) {
+        li {
+            background-color: $darkContent;
+        }
+        .fa-edit {
+            color: $darkDecorations;
+        }
+        .fa-exclamation-circle {
+            color: $darkDecorations;
+        }
+        .category {
+            color: $darkTextColor !important;
+        }
+        .list-group-item {
+            color: $darkTextColor !important;
+            border: solid 1.5px $darkDecorations;
+        }
     }
 </style>

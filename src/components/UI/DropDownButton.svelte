@@ -43,35 +43,36 @@
 </div>
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     button {
         font: inherit;
         border: 1px solid #434150;
-        background: $primaryTheme;
+        background: $lightPrimary;
         padding: 0.5rem 1rem;
-        color: $textColor;
+        color: $lightDecorations;
         border-radius: 5px;
-        border-color: $myYellow;
-        box-shadow: 1px 1px 3px $shadows;
+        border-color: $lightDecorations;
+        box-shadow: 1px 1px 3px $lightShadows;
         cursor: pointer;
         text-decoration: none;
     }
 
     .dropdown-menu {
-        background: $primaryTheme;
+        background: $lightPrimary;
         padding: 0 !important;
     }
 
     .dropdown-item {
-        color: $textColor;
+        color: $lightDecorations;
         border: none !important;
-        border-bottom: solid 0.5px $myYellow !important;
+        border-bottom: solid 0.5px $lightDecorations !important;
         border-radius: 2px;
     }
 
     .active {
-        background-color: $myYellow !important;
+        background-color: $lightDecorations !important;
     }
 
     button:focus {
@@ -80,9 +81,9 @@
 
     button:hover,
     button:active {
-        background: $myYellow;
-        border-color: $primaryTheme;
-        box-shadow: 1px 1px 8px $shadows;
+        background: $lightDecorations;
+        border-color: $lightPrimary;
+        box-shadow: 1px 1px 8px $lightShadows;
     }
 
     button:disabled,
@@ -93,5 +94,32 @@
         color: #959595;
         box-shadow: none;
         cursor: not-allowed;
+    }
+
+    :global(body.dark) {
+        button {
+            border: 1px solid #434150;
+            background: $darkPrimary;
+            color: $darkDecorations;
+            border-color: $darkDecorations;
+            box-shadow: 1px 1px 3px $darkShadows;
+        }
+
+        .dropdown-menu {
+            background: $darkPrimary;
+        }
+        .dropdown-item {
+            color: $darkDecorations;
+            border-bottom: solid 0.5px $darkDecorations !important;
+        }
+        .active {
+            background-color: $darkDecorations !important;
+        }
+        button:hover,
+        button:active {
+            background: $darkDecorations;
+            border-color: $darkPrimary;
+            box-shadow: 1px 1px 8px $darkShadows;
+        }
     }
 </style>

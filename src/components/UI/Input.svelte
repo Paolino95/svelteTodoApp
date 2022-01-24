@@ -12,26 +12,44 @@
 />
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     .isNotInForm {
-        color: $textColor;
+        color: $lightTextColor;
         max-width: 600px;
         border: none;
-        background: $shadows;
+        background: $lightShadows;
         padding: 10px;
     }
 
     .isInForm {
-        color: $textColor;
-        background-color: $softGrey;
+        color: $lightTextColor;
+        background-color: $lightContent;
         max-width: 600px;
         border: none;
-        border-bottom: solid 1px $myYellow !important;
+        border-bottom: solid 1px $lightDecorations !important;
         padding: 10px;
     }
 
     .form-control:focus {
-        box-shadow: 0 0 0 0.2rem $myYellow !important;
+        box-shadow: 0 0 0 0.2rem $lightDecorations !important;
+    }
+
+    :global(body.dark) {
+        .isNotInForm {
+            color: $darkTextColor;
+            background: $darkShadows;
+        }
+
+        .isInForm {
+            color: $darkTextColor;
+            background-color: $darkContent;
+            border-bottom: solid 1px $darkDecorations !important;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem $darkDecorations !important;
+        }
     }
 </style>

@@ -18,6 +18,7 @@
     let searchFilter = '';
     let category = 'Nessuna';
     let showModal = false;
+    let colorMode = 'dark';
     let ordering = [
         { id: 0, label: 'data crescente' },
         { id: 1, label: 'data decrescente' },
@@ -64,6 +65,20 @@
         }
     };
 
+    function toggleColorMode() {
+        if (colorMode === 'dark') {
+            colorMode = 'light';
+            document.body.classList.add('light');
+            document.body.classList.remove('dark');
+        } else if (colorMode === 'light') {
+            colorMode = 'dark';
+            document.body.classList.add('dark');
+            document.body.classList.remove('light');
+        }
+    }
+
+    $: colorModeIcon = colorMode === 'dark' ? 'fa-moon' : 'fa-sun';
+
     function getTodo(id) {
         return $todos.find(todo => todo.id === id);
     }
@@ -87,16 +102,23 @@
                 placeholder="Ricerca qui..."
             />
         </div>
-        <IconButton slot="slot2" icon="fa-plus-circle" on:click={openModal} />
-        <div slot="slot3" class="dropdown">
-            <DropDownButton
-                title="Filtra per categoria"
-                selections={$categories}
-                bind:value={category}
-            />
+        <div class="float-end" slot="slot2">
+            <IconButton icon="fa-plus-circle" on:click={openModal} />
         </div>
-        <div slot="slot4" class="dropdown">
-            <DropDownButton title="Ordina Per" selections={ordering} bind:value={order} />
+        <DropDownButton
+            slot="slot3"
+            title="Filtra per categoria"
+            selections={$categories}
+            bind:value={category}
+        />
+        <DropDownButton
+            slot="slot4"
+            title="Ordina Per"
+            selections={ordering}
+            bind:value={order}
+        />
+        <div transition:fade class="switch" slot="slot5">
+            <IconButton icon={colorModeIcon} on:click={toggleColorMode} />
         </div>
     </Header>
 
@@ -140,15 +162,29 @@
 {/if}
 
 <style lang="scss">
-    @import 'style/variables.scss';
+    @import 'style/dark_theme.scss';
+    @import 'style/light_theme.scss';
 
     .container {
         max-width: 600px;
+        position: relative;
     }
 
     .list-group {
         max-height: 600px;
-        border-bottom: solid 1.5px $myYellow;
+        border-bottom: solid 1.5px $lightDecorations;
+    }
+
+    :global(body.dark) .list-group {
+        border-bottom: solid 1.5px $darkDecorations;
+    }
+
+    :global(body) {
+        background-color: $lightPrimary;
+    }
+
+    :global(body.dark) {
+        background-color: $darkPrimary;
     }
 
     .row {
@@ -156,10 +192,15 @@
     }
 
     .input {
-        width: 90%;
+        width: 91%;
     }
 
     .todo {
         width: 285px !important;
+    }
+
+    .switch {
+        position: absolute;
+        right: 2%;
     }
 </style>
