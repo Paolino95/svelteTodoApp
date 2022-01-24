@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const sveltePreprocess = require('svelte-preprocess');
 
 module.exports = {
     entry: './src/main.js',
@@ -27,17 +28,19 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                test: /\.s[ac]ss$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(svelte)$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'svelte-loader',
                     options: {
                         compilerOptions: {
                             dev: true,
                         },
+                        preprocess: sveltePreprocess(),
                     },
                 },
             },
@@ -68,7 +71,7 @@ module.exports = {
     resolve: {
         alias: {
             svelte: path.resolve('node_modules', 'svelte'),
-            public: path.resolve('public'),
+            style: path.resolve(__dirname, 'style'),
         },
         extensions: ['.mjs', '.js', '.svelte'],
         mainFields: ['svelte', 'browser', 'module', 'main'],

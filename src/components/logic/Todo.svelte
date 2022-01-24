@@ -40,9 +40,11 @@
     </div>
 </li>
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     li {
-        background-color: rgba(204, 204, 204, 0.527);
+        background-color: $softGrey;
     }
     .icon {
         cursor: pointer;
@@ -56,24 +58,24 @@
         position: absolute;
         bottom: 15px;
         left: 5px;
-        color: rgba(199, 199, 199, 0.527);
+        color: $myYellow;
     }
     .fa-check {
         color: rgb(38, 224, 94);
     }
     .fa-exclamation-circle {
-        color: rgba(255, 153, 0, 0.863);
+        color: $myYellow;
     }
     .fa-trash-alt {
         color: rgba(5, 32, 66, 0.425);
     }
     .category {
-        color: white !important;
+        color: $textColor !important;
     }
     .list-group-item {
-        color: white !important;
+        color: $textColor !important;
         border-radius: 3px !important;
-        border: solid 1.5px rgba(255, 153, 0, 0.863);
+        border: solid 1.5px $myYellow;
         padding: 15px;
         margin: 10px;
         height: 200px;

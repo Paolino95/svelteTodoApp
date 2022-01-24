@@ -139,20 +139,26 @@
     />
 {/if}
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     .container {
         max-width: 600px;
     }
+
     .list-group {
         max-height: 600px;
-        border-bottom: solid 1.5px rgba(255, 153, 0, 0.863);
+        border-bottom: solid 1.5px $myYellow;
     }
+
     .row {
         margin: 0 !important;
     }
+
     .input {
         width: 90%;
     }
+
     .todo {
         width: 285px !important;
     }

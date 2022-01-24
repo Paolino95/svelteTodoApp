@@ -4,9 +4,11 @@
 
 <span class="error">{errorDescription}</span>
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     .error {
-        color: rgb(252, 153, 5);
+        color: $myYellow;
         font-family: 'Courier New', Courier, monospace;
         font-size: medium;
         font-style: italic;

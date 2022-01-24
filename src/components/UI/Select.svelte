@@ -21,23 +21,25 @@
     {/if}
 </div>
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     span {
-        color: white;
+        color: $textColor;
     }
     select {
-        background-color: rgb(107, 107, 107);
-        color: white;
-        border: solid 1.5px rgba(255, 153, 0, 0.863);
+        background-color: $primaryTheme;
+        color: $textColor;
+        border: solid 1.5px $myYellow;
         border-radius: 5px;
         cursor: pointer;
     }
     select > option {
         border-radius: 5px;
-        border-bottom: solid 1.5px rgba(255, 153, 0, 0.863);
+        border-bottom: solid 1.5px $myYellow;
     }
 
     .form-select:focus {
-        box-shadow: 0 0 0 0.2rem rgba(255, 153, 0, 0.582) !important;
+        box-shadow: 0 0 0 0.2rem $myYellow !important;
     }
 </style>

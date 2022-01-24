@@ -11,25 +11,27 @@
     bind:value
 />
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     .isNotInForm {
-        color: #fff;
+        color: $textColor;
         max-width: 600px;
         border: none;
-        background: rgba(0, 0, 0, 0.2);
+        background: $shadows;
         padding: 10px;
     }
 
     .isInForm {
-        color: white;
-        background-color: rgb(107, 107, 107);
+        color: $textColor;
+        background-color: $softGrey;
         max-width: 600px;
         border: none;
-        border-bottom: solid 1px rgba(255, 153, 0, 0.863) !important;
+        border-bottom: solid 1px $myYellow !important;
         padding: 10px;
     }
 
     .form-control:focus {
-        box-shadow: 0 0 0 0.2rem rgba(255, 153, 0, 0.582) !important;
+        box-shadow: 0 0 0 0.2rem $myYellow !important;
     }
 </style>

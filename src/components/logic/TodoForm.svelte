@@ -13,8 +13,10 @@
 </div>
 <Select bind:value={category} title="Categories" selections={$categories} />
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     span {
-        color: white;
+        color: $textColor;
     }
 </style>

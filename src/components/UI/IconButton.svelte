@@ -4,14 +4,16 @@
 
 <i class="fa fas far {icon} icon iconbutton" on:click />
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     .iconbutton {
         width: 10%;
         cursor: pointer;
-        color: rgb(29, 29, 29);
+        color: $iconButtonsColor;
         font-size: 40px;
     }
     .iconbutton:hover {
-        color: rgba(255, 153, 0, 0.863);
+        color: $myYellow;
     }
 </style>

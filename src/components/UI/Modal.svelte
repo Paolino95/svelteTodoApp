@@ -29,14 +29,16 @@
     </footer>
 </div>
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     .modal-backdrop {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.75);
+        background: $shadows;
         z-index: 10;
     }
 
@@ -46,20 +48,19 @@
         left: 10%;
         width: 80%;
         max-height: 80vh;
-        background: white;
         border-radius: 5px;
         z-index: 100;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        box-shadow: 0 2px 8px $shadows;
         height: 400px;
         overflow: hidden !important;
-        background-color: rgba(107, 107, 107, 0.918);
-        border: solid 1.5px rgba(255, 153, 0, 0.863);
+        background-color: $primaryTheme;
+        border: solid 1.5px $myYellow;
     }
 
     h1 {
         padding: 1rem;
         margin-left: 5px;
-        color: white;
+        color: $textColor;
         font-family: serif;
         font-style: italic;
     }

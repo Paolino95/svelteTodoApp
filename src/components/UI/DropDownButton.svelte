@@ -42,33 +42,36 @@
     </ul>
 </div>
 
-<style>
+<style lang="scss">
+    @import 'style/variables.scss';
+
     button {
         font: inherit;
         border: 1px solid #434150;
-        background: rgb(68, 68, 68);
+        background: $primaryTheme;
         padding: 0.5rem 1rem;
-        color: white;
+        color: $textColor;
         border-radius: 5px;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+        border-color: $myYellow;
+        box-shadow: 1px 1px 3px $shadows;
         cursor: pointer;
         text-decoration: none;
     }
 
     .dropdown-menu {
-        background: rgb(68, 68, 68);
+        background: $primaryTheme;
         padding: 0 !important;
     }
 
     .dropdown-item {
-        color: white;
+        color: $textColor;
         border: none !important;
-        border-bottom: solid 0.5px rgba(255, 153, 0, 0.863) !important;
+        border-bottom: solid 0.5px $myYellow !important;
         border-radius: 2px;
     }
 
     .active {
-        background-color: rgba(255, 153, 0, 0.863) !important;
+        background-color: $myYellow !important;
     }
 
     button:focus {
@@ -77,9 +80,9 @@
 
     button:hover,
     button:active {
-        background: rgba(255, 153, 0, 0.863);
-        border-color: rgb(68, 68, 68);
-        box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
+        background: $myYellow;
+        border-color: $primaryTheme;
+        box-shadow: 1px 1px 8px $shadows;
     }
 
     button:disabled,
