@@ -70,6 +70,9 @@
     .fa-trash-alt {
         color: rgba(5, 32, 66, 0.425);
     }
+    .fa-trash-alt:hover {
+        color: $lightDecorations;
+    }
     .category {
         color: $lightTextColor !important;
     }
@@ -98,6 +101,9 @@
         .list-group-item {
             color: $darkTextColor !important;
             border: solid 1.5px $darkDecorations;
+        }
+        .fa-trash-alt:hover {
+            color: $darkDecorations;
         }
     }
 </style>

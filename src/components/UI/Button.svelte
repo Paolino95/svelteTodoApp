@@ -23,7 +23,7 @@
     button,
     a {
         font: inherit;
-        border: 1px solid #434150;
+        border: 1px solid $lightDecorations;
         background: $lightPrimary;
         padding: 0.5rem 1rem;
         color: $lightTextColor;
@@ -42,7 +42,8 @@
     a:hover,
     a:active {
         background: $lightDecorations;
-        border-color: $lightPrimary;
+        border-color: $lightDecorations;
+        color: $lightPrimary;
         box-shadow: 1px 1px 8px $lightShadows;
     }
 
@@ -71,6 +72,15 @@
             background: $darkDecorations;
             border-color: $darkPrimary;
             box-shadow: 1px 1px 8px $darkShadows;
+        }
+        button:disabled,
+        button:disabled:hover,
+        button:disabled:active {
+            background: #ccc;
+            border-color: #ccc;
+            color: #959595;
+            box-shadow: none;
+            cursor: not-allowed;
         }
     }
 </style>

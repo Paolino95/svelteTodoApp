@@ -73,14 +73,14 @@
 
     .active {
         background-color: $lightDecorations !important;
+        color: $lightPrimary;
     }
 
     button:focus {
         outline: none;
     }
 
-    button:hover,
-    button:active {
+    button:hover {
         background: $lightDecorations;
         border-color: $lightPrimary;
         box-shadow: 1px 1px 8px $lightShadows;
@@ -104,7 +104,6 @@
             border-color: $darkDecorations;
             box-shadow: 1px 1px 3px $darkShadows;
         }
-
         .dropdown-menu {
             background: $darkPrimary;
         }
@@ -114,12 +113,13 @@
         }
         .active {
             background-color: $darkDecorations !important;
+            color: $darkPrimary;
         }
-        button:hover,
-        button:active {
+        button:hover {
             background: $darkDecorations;
             border-color: $darkPrimary;
             box-shadow: 1px 1px 8px $darkShadows;
+            color: $darkPrimary;
         }
     }
 </style>

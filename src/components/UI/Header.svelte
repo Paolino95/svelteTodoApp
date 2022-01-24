@@ -12,12 +12,12 @@
     {:else}
         <h1 class="mb-4">{title}</h1>
     {/if}
-    <div class="d-inline-flex w-100 align-items-center">
+    <div class="d-inline-flex w-100 align-items-center justify-content-between">
         <slot name="slot1" />
         <slot name="slot2" />
+        <slot name="slot3" />
     </div>
     <div class="d-inline-flex w-100 m-2 align-items-center">
-        <slot name="slot3" />
         <slot name="slot4" />
         <slot name="slot5" />
     </div>
@@ -28,7 +28,7 @@
     @import 'style/light_theme.scss';
 
     img {
-        width: 20%;
+        width: 18%;
     }
 
     h1 {

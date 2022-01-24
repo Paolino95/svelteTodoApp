@@ -102,24 +102,24 @@
                 placeholder="Ricerca qui..."
             />
         </div>
-        <div class="float-end" slot="slot2">
+        <div slot="slot2">
             <IconButton icon="fa-plus-circle" on:click={openModal} />
         </div>
+        <div transition:fade slot="slot3">
+            <IconButton icon={colorModeIcon} on:click={toggleColorMode} />
+        </div>
         <DropDownButton
-            slot="slot3"
+            slot="slot4"
             title="Filtra per categoria"
             selections={$categories}
             bind:value={category}
         />
         <DropDownButton
-            slot="slot4"
+            slot="slot5"
             title="Ordina Per"
             selections={ordering}
             bind:value={order}
         />
-        <div transition:fade class="switch" slot="slot5">
-            <IconButton icon={colorModeIcon} on:click={toggleColorMode} />
-        </div>
     </Header>
 
     {#if $todos.length > 0}
@@ -192,15 +192,10 @@
     }
 
     .input {
-        width: 91%;
+        width: 80%;
     }
 
     .todo {
         width: 285px !important;
-    }
-
-    .switch {
-        position: absolute;
-        right: 2%;
     }
 </style>
