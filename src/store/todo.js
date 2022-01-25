@@ -44,7 +44,11 @@ const todosManager = {
                 return res.data;
             })
             .then(data => {
-                todos.update(items => [...items, { ...todo, id: data.name }]);
+                const { category, date, description, done } = todo;
+                todos.update(items => [
+                    ...items,
+                    { category, date: date.toJSON(), description, done, id: data.name },
+                ]);
             })
             .catch(err => {
                 console.log({ err });
