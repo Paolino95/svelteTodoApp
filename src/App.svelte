@@ -130,7 +130,7 @@
                     {#each filterTodos as todo (todo.id)}
                         <div
                             class="todo"
-                            transition:scale={{ duration: 500 }}
+                            transition:scale={{ duration: 50 }}
                             animate:flip={{ duration: 500 }}
                         >
                             <Todo
