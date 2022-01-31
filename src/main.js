@@ -1,9 +1,10 @@
 import App from './App.svelte';
+import './styles.css';
 
 const app = new App({
     target: document.body,
     props: {
-        colorTheme: document.body.classList.value,
+        colorTheme: document.body.classList.contains('dark') ? 'dark' : 'light',
     },
 });
 

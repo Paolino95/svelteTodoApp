@@ -60,29 +60,17 @@
 
 <Modal title="{title} Todo" on:closeModal={cancel}>
     <TodoForm bind:todoDescription bind:category />
-    <div slot="footer" class="d-flex px-3 footer">
+    <div
+        slot="footer"
+        class="flex px-3 absolute bottom-8 right-0 w-full items-center justify-between"
+    >
         {#if error() && !id}
             <Error errorDescription="Todo già presente !" />
         {/if}
-        <div class="saveButton">
+        <div class="absolute right-5">
             <Button on:click={handleSubmit} disabled={!semanticValidation || error()}
                 >{title} Todo</Button
             >
         </div>
     </div>
 </Modal>
-
-<style>
-    .footer {
-        position: absolute;
-        bottom: 30px;
-        right: 0px;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .saveButton {
-        position: absolute;
-        right: 15px;
-    }
-</style>

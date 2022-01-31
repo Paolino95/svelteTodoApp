@@ -1,4 +1,4 @@
-<div class="scrollable">
+<div class="scrollable h-full">
     <slot />
 </div>
 

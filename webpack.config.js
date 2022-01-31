@@ -1,7 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const sveltePreprocess = require('svelte-preprocess');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/main.js',
@@ -28,8 +28,8 @@ module.exports = {
                 },
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.(svelte)$/,
@@ -40,7 +40,6 @@ module.exports = {
                         compilerOptions: {
                             dev: true,
                         },
-                        preprocess: sveltePreprocess(),
                     },
                 },
             },
@@ -67,11 +66,13 @@ module.exports = {
             favicon: './public/Todo.png',
             template: './src/index.html',
         }),
+        new MiniCssExtractPlugin({
+            filename: './src/styles.css',
+        }),
     ],
     resolve: {
         alias: {
             svelte: path.resolve('node_modules', 'svelte'),
-            style: path.resolve(__dirname, 'style'),
         },
         extensions: ['.mjs', '.js', '.svelte'],
         mainFields: ['svelte', 'browser', 'module', 'main'],

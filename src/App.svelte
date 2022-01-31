@@ -69,12 +69,12 @@
     function toggleColorMode() {
         if (colorTheme === 'dark') {
             colorTheme = 'light';
-            document.body.classList.add('light');
-            document.body.classList.remove('dark');
+            document.body.classList.add('light', 'bg-light-primary');
+            document.body.classList.remove('dark', 'bg-dark-primary');
         } else if (colorTheme === 'light') {
             colorTheme = 'dark';
-            document.body.classList.add('dark');
-            document.body.classList.remove('light');
+            document.body.classList.add('dark', 'bg-dark-primary');
+            document.body.classList.remove('light', 'bg-light-primary');
         }
     }
 
@@ -94,44 +94,38 @@
     }
 </script>
 
-<div class="container">
+<div class="container h-full relative max-w-2xl mx-auto px-1">
     <Header title="ToDo App" image={ModalImage}>
-        <div slot="slot1" class="m-2 input">
-            <Input
-                bind:value={searchFilter}
-                isInForm={false}
-                placeholder="Ricerca qui..."
-            />
-        </div>
-        <div slot="slot2">
-            <IconButton icon="fa-plus-circle" on:click={openModal} />
-        </div>
+        <Input bind:value={searchFilter} slot="slot1" placeholder="Ricerca qui..." />
+        <IconButton slot="slot2" icon="fa-plus-circle" on:click={openModal} />
         <div transition:fade slot="slot3">
             <IconButton icon={colorThemeIcon} on:click={toggleColorMode} />
         </div>
         <DropDownButton
             slot="slot4"
-            title="Filtra per categoria"
-            selections={$categories}
-            bind:value={category}
-        />
-        <DropDownButton
-            slot="slot5"
             title="Ordina Per"
             selections={ordering}
             bind:value={order}
         />
+        <DropDownButton
+            slot="slot5"
+            title="Filtra per categoria"
+            selections={$categories}
+            bind:value={category}
+        />
     </Header>
 
     {#if $todos.length > 0}
-        <ul class="list-group text-light">
+        <ul
+            class="h-2/3 rounded border-b-solid border-b-2 border-b-light-decoration dark:border-b-dark-decoration"
+        >
             <VerticalScroller>
-                <div class="row justify-content-between">
+                <div class="grid grid-cols-2 gap-5 justify-between p-4">
                     {#each filterTodos as todo (todo.id)}
                         <div
-                            class="todo"
-                            transition:scale={{ duration: 50 }}
-                            animate:flip={{ duration: 500 }}
+                            in:scale={{ delay: 550, duration: 500 }}
+                            out:scale={{ delay: 50, duration: 250 }}
+                            animate:flip={{ delay: 50, duration: 500 }}
                         >
                             <Todo
                                 id={todo.id}
@@ -161,42 +155,3 @@
         on:cancel={closeModal}
     />
 {/if}
-
-<style lang="scss">
-    @import 'style/dark_theme.scss';
-    @import 'style/light_theme.scss';
-
-    .container {
-        max-width: 600px;
-        position: relative;
-    }
-
-    .list-group {
-        max-height: 600px;
-        border-bottom: solid 1.5px $lightDecorations;
-    }
-
-    :global(body.dark) .list-group {
-        border-bottom: solid 1.5px $darkDecorations;
-    }
-
-    :global(body) {
-        background-color: $lightPrimary;
-    }
-
-    :global(body.dark) {
-        background-color: $darkPrimary;
-    }
-
-    .row {
-        margin: 0 !important;
-    }
-
-    .input {
-        width: 80%;
-    }
-
-    .todo {
-        width: 285px !important;
-    }
-</style>

@@ -7,21 +7,8 @@
     export let category;
 </script>
 
-<div class="d-flex mt-2">
-    <span class="p-2 w-25">Label</span>
-    <Input bind:value={todoDescription} isInForm={true} />
+<div class="flex mt-2">
+    <span class="p-2 w-1/4 text-light-text dark:text-dark-text">Label</span>
+    <Input bind:value={todoDescription} placeholder="Descrizione Todo..." />
 </div>
 <Select bind:value={category} title="Categories" selections={$categories} />
-
-<style lang="scss">
-    @import 'style/dark_theme.scss';
-    @import 'style/light_theme.scss';
-
-    span {
-        color: $lightTextColor;
-    }
-
-    :global(body.dark) span {
-        color: $darkTextColor;
-    }
-</style>

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .form-control {
+        @apply text-light-text dark:text-dark-text
+        border-4 border-transparent p-3 rounded cursor-text
+        hover:border-b-4 hover:dark:border-b-dark-decoration hover:border-b-light-decoration
+        outline-none bg-transparent;
+    }
+
+    .modal-backdrop {
+        @apply fixed top-0 left-0 w-full h-full bg-gray-900/60 z-10;
+    }
+
+    .modal-content {
+        @apply p-4 relative bg-transparent border-none !important;
+    }
+
+    .modal {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 max-h-80 rounded-md z-20 shadow-lg 
+        h-1/3 bg-light-content border-2 border-solid border-light-decoration
+        dark:border-dark-decoration dark:bg-dark-content;
+    }
+
+    .btn-primary {
+        @apply inline-flex justify-center
+        bg-transparent text-light-text dark:text-dark-text
+        cursor-pointer hover:bg-light-decoration hover:text-light-content hover:dark:bg-dark-decoration 
+        hover:dark:text-dark-content hover:rounded-md;
+    }
+
+    .dropdown-item {
+        @apply border-b border-b-light-decoration dark:border-b-dark-decoration 
+        text-light-text dark:text-dark-text p-1 hover:bg-light-decoration hover:text-light-content 
+        hover:dark:text-dark-content hover:dark:bg-dark-decoration;
+    }
+
+    .activeItem {
+        @apply text-light-content dark:text-dark-content bg-light-decoration dark:bg-dark-decoration;
+    }
+
+    .icon {
+        @apply cursor-pointer px-2 hover:scale-175 hover:text-light-primary hover:dark:text-dark-decoration transition ease-in-out duration-200;
+    }
+
+    .disabled {
+        @apply bg-gray-300 cursor-not-allowed;
+    }
+}

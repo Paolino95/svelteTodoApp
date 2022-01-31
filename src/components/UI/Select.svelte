@@ -4,61 +4,22 @@
     export let value;
 </script>
 
-<div class="d-flex mt-2">
+<div class="flex mt-2">
     {#if title}
-        <span class="p-2 w-25">{title}</span>
-        <select class="form-select" aria-label="Select component" bind:value>
-            {#each selections as selection (selection.id)}
-                <option selected={selection.label === value}>{selection.label}</option>
-            {/each}
-        </select>
-    {:else}
-        <select class="form-select" aria-label="Select component" bind:value>
-            {#each selections as selection (selection.id)}
-                <option selected={selection.label === value}>{selection.label}</option>
-            {/each}
-        </select>
+        <span class="p-2 w-1/4 text-light-text dark:text-dark-text">{title}</span>
     {/if}
+    <select
+        class="w-3/4 p-1
+        bg-light-primary text-light-text border-2 border-light-decoration border-solid outline-none
+        cursor-pointer rounded-md dark:border-dark-decoration dark:text-dark-text dark:bg-dark-primary"
+        aria-label="Select component"
+        bind:value
+    >
+        {#each selections as selection (selection.id)}
+            <option
+                class="!p-1 !border-b-2 !border-b-solid !border-b-light-decoration !text-opacity-0dark:border-b-dark-decoration"
+                selected={selection.label === value}>{selection.label}</option
+            >
+        {/each}
+    </select>
 </div>
-
-<style lang="scss">
-    @import 'style/dark_theme.scss';
-    @import 'style/light_theme.scss';
-
-    span {
-        color: $lightTextColor;
-    }
-    select {
-        background-color: $lightPrimary;
-        color: $lightTextColor;
-        border: solid 1.5px $lightDecorations;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    select > option {
-        border-radius: 5px;
-        border-bottom: solid 1.5px $lightDecorations;
-    }
-
-    .form-select:focus {
-        box-shadow: 0 0 0 0.2rem $lightDecorations !important;
-    }
-
-    :global(body.dark) {
-        span {
-            color: $darkTextColor;
-        }
-        select {
-            background-color: $darkPrimary;
-            color: $darkTextColor;
-            border: solid 1.5px $darkDecorations;
-        }
-        select > option {
-            border-bottom: solid 1.5px $darkDecorations;
-        }
-
-        .form-select:focus {
-            box-shadow: 0 0 0 0.2rem $darkDecorations !important;
-        }
-    }
-</style>

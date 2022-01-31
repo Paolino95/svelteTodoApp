@@ -1,86 +1,19 @@
 <script>
     export let type = 'button';
-    export let href = null;
     export let mode = null;
     export let color = null;
     export let disabled;
 </script>
 
-{#if href}
-    <a {href}>
-        <slot />
-    </a>
-{:else}
-    <button class="{mode} {color}" {type} {disabled} on:click>
-        <slot />
-    </button>
-{/if}
-
-<style lang="scss">
-    @import 'style/dark_theme.scss';
-    @import 'style/light_theme.scss';
-
-    button,
-    a {
-        font: inherit;
-        border: 1px solid $lightDecorations;
-        background: $lightPrimary;
-        padding: 0.5rem 1rem;
-        color: $lightTextColor;
-        border-radius: 5px;
-        box-shadow: 1px 1px 3px $lightShadows;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    button:hover,
-    button:active,
-    a:hover,
-    a:active {
-        background: $lightDecorations;
-        border-color: $lightDecorations;
-        color: $lightPrimary;
-        box-shadow: 1px 1px 8px $lightShadows;
-    }
-
-    button:disabled,
-    button:disabled:hover,
-    button:disabled:active {
-        background: #ccc;
-        border-color: #ccc;
-        color: #959595;
-        box-shadow: none;
-        cursor: not-allowed;
-    }
-
-    :global(body.dark) {
-        button,
-        a {
-            border: 1px solid #434150;
-            background: $darkPrimary;
-            color: $darkTextColor;
-            box-shadow: 1px 1px 3px $darkShadows;
-        }
-        button:hover,
-        button:active,
-        a:hover,
-        a:active {
-            background: $darkDecorations;
-            border-color: $darkPrimary;
-            box-shadow: 1px 1px 8px $darkShadows;
-        }
-        button:disabled,
-        button:disabled:hover,
-        button:disabled:active {
-            background: #ccc;
-            border-color: #ccc;
-            color: #959595;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-    }
-</style>
+<button
+    class="border-2 border-solid border-light-decoration dark:border-dark-decoration
+  bg-light-primary dark:bg-dark-primary p-2 text-light-text dark:text-dark-text rounded-md
+    hover:bg-light-decoration hover:text-light-primary dark:hover:text-dark-primary dark:hover:bg-dark-decoration
+    hover:!disabled:scale-110 transition duration-100 disabled:disabled
+    cursor-pointer {mode} {color}"
+    {type}
+    {disabled}
+    on:click
+>
+    <slot />
+</button>

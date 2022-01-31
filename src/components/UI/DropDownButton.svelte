@@ -1,125 +1,78 @@
 <script>
+    import { fade } from 'svelte/transition';
     export let selections = {};
     export let title = '';
     export let value;
+    let showDropdownMenu = false;
 
     function updateValue(event) {
         value = event.target.value;
+        showDropdownMenu = false;
+    }
+
+    function toggleDropDown() {
+        showDropdownMenu = !showDropdownMenu;
     }
 </script>
 
-<div class="dropdown me-1">
-    <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-    >
-        {title}
-    </button>
-    <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-        {#each selections as selection (selection.id)}
-            <li>
-                <button
-                    class="dropdown-item"
-                    class:active={selection.label === value}
-                    selected={selection.label === value}
-                    value={selection.label}
-                    on:click={updateValue}
-                    >{selection.label}
-                </button>
-            </li>
-        {/each}
-        <li>
-            <button
-                class="dropdown-item"
-                class:active={'Nessuna' === value}
-                on:click={updateValue}
-                value="Nessuna">Nessuna</button
+<div class="relative inline-block text-left w-full h-full">
+    <div>
+        <button
+            type="button"
+            class="btn-primary w-full h-full p-2 items-center"
+            id={title}
+            aria-expanded="true"
+            aria-haspopup="true"
+            on:click={toggleDropDown}
+        >
+            {title}
+            <svg
+                class="-mr-1 ml-2 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
             >
-        </li>
-    </ul>
+                <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                />
+            </svg>
+        </button>
+    </div>
+    {#if showDropdownMenu}
+        <div
+            in:fade={{ duration: 100 }}
+            out:fade={{ duration: 100 }}
+            class="absolute z-10 w-full rounded-b-md
+            bg-light-content dark:bg-dark-content focus:outline-none border
+            border-light-decoration dark:border-dark-decoration overflow-hidden"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby={title}
+            tabindex="-1"
+        >
+            <div class="flex flex-col">
+                {#each selections as selection (selection.id)}
+                    <button
+                        class="dropdown-item"
+                        class:activeItem={selection.label === value}
+                        selected={selection.label === value}
+                        value={selection.label}
+                        on:click={updateValue}
+                        >{selection.label}
+                    </button>
+                {/each}
+
+                <button
+                    class="dropdown-item rounded-b-md"
+                    class:activeItem={'Nessuna' === value}
+                    on:click={updateValue}
+                    value="Nessuna"
+                    >Nessuna
+                </button>
+            </div>
+        </div>
+    {/if}
 </div>
-
-<style lang="scss">
-    @import 'style/dark_theme.scss';
-    @import 'style/light_theme.scss';
-
-    button {
-        font: inherit;
-        border: 1px solid #434150;
-        background: $lightPrimary;
-        padding: 0.5rem 1rem;
-        color: $lightDecorations;
-        border-radius: 5px;
-        border-color: $lightDecorations;
-        box-shadow: 1px 1px 3px $lightShadows;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    .dropdown-menu {
-        background: $lightPrimary;
-        padding: 0 !important;
-    }
-
-    .dropdown-item {
-        color: $lightDecorations;
-        border: none !important;
-        border-bottom: solid 0.5px $lightDecorations !important;
-        border-radius: 2px;
-    }
-
-    .active {
-        background-color: $lightDecorations !important;
-        color: $lightPrimary;
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    button:hover {
-        background: $lightDecorations;
-        border-color: $lightPrimary;
-        box-shadow: 1px 1px 8px $lightShadows;
-    }
-
-    button:disabled,
-    button:disabled:hover,
-    button:disabled:active {
-        background: #ccc;
-        border-color: #ccc;
-        color: #959595;
-        box-shadow: none;
-        cursor: not-allowed;
-    }
-
-    :global(body.dark) {
-        button {
-            border: 1px solid #434150;
-            background: $darkPrimary;
-            color: $darkDecorations;
-            border-color: $darkDecorations;
-            box-shadow: 1px 1px 3px $darkShadows;
-        }
-        .dropdown-menu {
-            background: $darkPrimary;
-        }
-        .dropdown-item {
-            color: $darkDecorations;
-            border-bottom: solid 0.5px $darkDecorations !important;
-        }
-        .active {
-            background-color: $darkDecorations !important;
-            color: $darkPrimary;
-        }
-        button:hover {
-            background: $darkDecorations;
-            border-color: $darkPrimary;
-            box-shadow: 1px 1px 8px $darkShadows;
-            color: $darkPrimary;
-        }
-    }
-</style>
