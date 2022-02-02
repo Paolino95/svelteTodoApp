@@ -6,12 +6,13 @@
 
 <div class="flex mt-2">
     {#if title}
-        <span class="p-2 w-1/4 text-light-text dark:text-dark-text">{title}</span>
+        <span class="p-2 sm:w-1/4 w-1/3 text-light-text dark:text-dark-text">{title}</span
+        >
     {/if}
     <select
-        class="w-3/4 p-1
+        class="sm:w-3/4 w-2/3 p-1
         bg-light-primary text-light-text border-2 border-light-decoration border-solid outline-none
-        cursor-pointer rounded-md dark:border-dark-decoration dark:text-dark-text dark:bg-dark-primary"
+        cursor-pointer rounded-md dark:border-dark-decoration dark:text-dark-text dark:bg-dark-primary sm:text-base text-xs"
         aria-label="Select component"
         bind:value
     >

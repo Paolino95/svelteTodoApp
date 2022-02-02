@@ -24,8 +24,8 @@
 </script>
 
 <li
-    class="text-light-text relative dark:text-dark-text rounded border-2 border-solid 
-border-light-decoration dark:border-dark-decoration p-4 m-2 h-48 bg-light-content dark:bg-dark-content"
+    class="text-light-text relative dark:text-dark-text rounded border-2 border-solid sm:text-base text-xs
+border-light-decoration dark:border-dark-decoration p-4 m-2 sm:h-48 h-28 bg-light-content dark:bg-dark-content"
 >
     <span>
         {description}

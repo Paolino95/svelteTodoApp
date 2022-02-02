@@ -2,6 +2,9 @@ module.exports = {
     content: ['./src/*.html', './src/**/*.svelte'],
     darkMode: 'class',
     theme: {
+        container: {
+            center: true,
+        },
         extend: {
             colors: {
                 'light-primary': '#ffffffff',

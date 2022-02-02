@@ -94,7 +94,7 @@
     }
 </script>
 
-<div class="container h-full relative max-w-2xl mx-auto px-1">
+<div class="container h-full relative max-w-2xl px-1">
     <Header title="ToDo App" image={ModalImage}>
         <Input bind:value={searchFilter} slot="slot1" placeholder="Ricerca qui..." />
         <IconButton slot="slot2" icon="fa-plus-circle" on:click={openModal} />
@@ -120,7 +120,9 @@
             class="h-2/3 rounded border-b-solid border-b-2 border-b-light-decoration dark:border-b-dark-decoration"
         >
             <VerticalScroller>
-                <div class="grid grid-cols-2 gap-5 justify-between p-4">
+                <div
+                    class="grid sm:grid-cols-2 sm:gap-5 justify-between sm:p-4 p-2 grid-cols-1 gap-3"
+                >
                     {#each filterTodos as todo (todo.id)}
                         <div
                             in:scale={{ delay: 550, duration: 500 }}
