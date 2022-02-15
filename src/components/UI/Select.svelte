@@ -12,7 +12,7 @@
     <select
         class="sm:w-3/4 w-2/3 p-1
         bg-light-primary text-light-text border-2 border-light-decoration border-solid outline-none
-        cursor-pointer rounded-md dark:border-dark-decoration dark:text-dark-text dark:bg-dark-primary sm:text-base text-xs"
+        cursor-pointer rounded-md dark:border-dark-decoration dark:text-dark-text dark:bg-dark-primary "
         aria-label="Select component"
         bind:value
     >

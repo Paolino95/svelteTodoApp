@@ -25,7 +25,7 @@
     }
 
     .btn-primary {
-        @apply inline-flex justify-center sm:text-base text-xs
+        @apply inline-flex justify-center 
         bg-transparent text-light-text dark:text-dark-text
         cursor-pointer hover:bg-light-decoration hover:text-light-content hover:dark:bg-dark-decoration 
         hover:dark:text-dark-content hover:rounded-md;
